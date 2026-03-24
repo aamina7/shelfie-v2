@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-50% - 1rem));
+  }
+}
+
+.marquee-track {
+  display: flex; /* Crucial for horizontal layout */
+  width: max-content;
+  animation: marquee 22s linear infinite;
+  will-change: transform;
+}

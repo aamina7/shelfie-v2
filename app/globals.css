@@ -2,6 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
+/* 1. TYPOGRAPHY & BASE STYLING (Standard CSS to avoid build errors) */
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: auto !important;
+}
+
+body {
+  min-height: 100%;
+  background-color: #f7f4ee;
+  color: #000000;
+  overflow-x: hidden;
+}
+
+/* 2. LENIS CORE STYLES (REQUIRED FOR SMOOTH SCROLL) */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* 3. MONTFORT MARQUEE SYSTEM */
 @keyframes marquee {
   0% {
     transform: translateX(0);
@@ -11,9 +44,33 @@
   }
 }
 
+.marquee-container {
+  overflow: hidden;
+  position: relative;
+  /* Masking creates the "fade-out" luxury effect at edges */
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 15%,
+    black 85%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 15%,
+    black 85%,
+    transparent
+  );
+}
+
 .marquee-track {
-  display: flex; /* Crucial for horizontal layout */
+  display: flex;
   width: max-content;
-  animation: marquee 22s linear infinite;
+  animation: marquee 25s linear infinite;
   will-change: transform;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
 }

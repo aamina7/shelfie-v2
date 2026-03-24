@@ -1,8 +1,17 @@
+"use client";
+import { motion } from "framer-motion";
+
 export default function Newsletter() {
   return (
     <>
       <section className="bg-[#f7f4ee] px-6 py-28 md:px-10 lg:px-14">
-        <div className="mx-auto max-w-[1100px] text-center">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="mx-auto max-w-[1100px] text-center"
+        >
 
           {/* TOP BORDER LINE */}
           <div className="mb-16 border-t-[2px] border-[#d56600] rounded-t-[30px]" />
@@ -27,7 +36,13 @@ export default function Newsletter() {
           </p>
 
           {/* NEWSLETTER BOX */}
-          <div className="mx-auto mt-12 max-w-[560px] rounded-[20px] bg-white/40 px-8 py-10 shadow-sm">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            className="mx-auto mt-12 max-w-[560px] rounded-[20px] bg-white/40 px-8 py-10 shadow-sm"
+          >
 
             <p className="mb-6 text-[13px] font-semibold tracking-[0.2em] text-[#d56600]">
               SUBSCRIBE TO OUR NEWSLETTER
@@ -40,11 +55,11 @@ export default function Newsletter() {
                 className="h-[48px] flex-1 rounded-full border border-black/10 bg-[#f4f2f6] px-5 text-[14px] outline-none"
               />
 
-              <button className="flex h-[48px] w-[48px] items-center justify-center rounded-full bg-[#3a153d] text-white text-[18px]">
+              <button className="flex h-[48px] w-[48px] items-center justify-center rounded-full bg-[#3a153d] text-white text-[18px] transition-transform hover:scale-110 active:scale-95">
                 →
               </button>
             </div>
-          </div>
+          </motion.div>
 
           {/* CONTACT */}
           <p className="mt-10 text-[14px] text-[#6b7280]">
@@ -57,16 +72,17 @@ export default function Newsletter() {
           {/* SOCIAL ICONS */}
           <div className="mt-6 flex justify-center gap-6">
             {["X", "IG", "F", "IN"].map((item, i) => (
-              <div
+              <motion.div
                 key={i}
-                className="flex h-[42px] w-[42px] items-center justify-center rounded-full bg-[#ede7f3] text-[#4b1d58] text-[14px] font-semibold"
+                whileHover={{ y: -5 }}
+                className="flex h-[42px] w-[42px] cursor-pointer items-center justify-center rounded-full bg-[#ede7f3] text-[#4b1d58] text-[14px] font-semibold transition-colors hover:bg-[#4b1d58] hover:text-white"
               >
                 {item}
-              </div>
+              </motion.div>
             ))}
           </div>
 
-        </div>
+        </motion.div>
       </section>
 
       {/* 3 LINES OF EMPTY SPACE (160px) */}

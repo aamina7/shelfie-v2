@@ -10,18 +10,16 @@ export default function Footer() {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: footerRef.current,
-          start: "top 95%", // Triggers just before it fully enters
+          start: "top 95%", 
           toggleActions: "play none none none",
         }
       });
 
-      // The line grows from the center
       tl.from(".footer-line", {
         scaleX: 0,
         duration: 1.5,
         ease: "power4.inOut",
       })
-      // The text slides up slightly
       .from(".footer-text", {
         y: 20,
         opacity: 0,
@@ -41,12 +39,14 @@ export default function Footer() {
         {/* LINE with Reveal Animation */}
         <div className="footer-line mb-8 border-t border-black/10 origin-center" />
 
-        {/* TEXT with Slide Reveal */}
+        {/* TEXT with Slide Reveal & Beige Highlight */}
         <div className="overflow-hidden">
           <p className="footer-text text-[14px] text-[#6b7280] tracking-wide">
-            A product by{" "}
-            <span className="text-[#d56600] font-semibold uppercase tracking-wider">
-              JAC Magnus Private Limited
+            <span className="bg-[#f7f4ee] px-4 py-2 rounded-md inline-block decoration-clone">
+              A product by{" "}
+              <span className="text-[#d56600] font-semibold uppercase tracking-wider">
+                JAC Magnus Private Limited
+              </span>
             </span>
           </p>
         </div>

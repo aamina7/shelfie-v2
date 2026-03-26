@@ -13,19 +13,17 @@ export default function AuthorJoin() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % phoneSlides.length);
-    }, 2000); // Set to 2s for a smoother feel
-
+    }, 2000); 
     return () => clearInterval(timer);
   }, []);
 
   return (
     <>
       <section className="bg-transparent px-6 py-24 md:px-10 lg:px-14 font-sans">
-        <div className="mx-auto flex max-w-[1000px] items-center justify-between gap-14">
+        <div className="mx-auto flex max-w-[1100px] items-center justify-between gap-14">
           
-          {/* LEFT PHONE IMAGE (ANIMATED CROSS-FADE) */}
-          {/* h-[420px] is kept strictly to match your original height */}
-          <div className="w-[40%] flex justify-center relative h-[420px]">
+          {/* LEFT PHONE IMAGE */}
+          <div className="w-[40%] flex justify-center relative h-[480px]">
             <AnimatePresence mode="wait">
               <motion.img
                 key={current}
@@ -35,64 +33,69 @@ export default function AuthorJoin() {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.5 }}
                 alt="Shelfie mobile screen"
-                className="absolute h-[420px] w-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.15)]"
+                className="absolute h-full w-auto object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.1)]"
               />
             </AnimatePresence>
           </div>
 
-          {/* RIGHT FORM (SUBTLE REVEAL) */}
+          {/* RIGHT FORM */}
           <motion.div 
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="w-[50%]"
+            className="w-[55%]"
           >
             <h2
-              className="text-[52px] leading-[0.95] text-[#1f1f1f]"
+              className="text-[56px] leading-[0.95] text-[#1f1f1f] uppercase"
               style={{ fontFamily: "var(--font-bebas), sans-serif" }}
             >
               JOIN AS AN AUTHOR
             </h2>
 
-            <p className="mt-2 text-[15px] text-[#4b5563]">
+            <p className="mt-4 text-[16px] text-black font-bold">
               Start your storytelling journey with Shelfie today.
             </p>
 
-            <div className="mt-8 space-y-3">
+            {/* UPDATED: Increased gap-y-6 for the specific spacing in your screenshot */}
+            <div className="mt-10 flex flex-col gap-y-6">
               <input
                 type="text"
                 placeholder="Full Name"
-                className="h-[44px] w-full rounded-[10px] border border-black/10 bg-[#f4f2f6] px-4 text-[14px] outline-none placeholder:text-[#8a8f98] focus:ring-1 focus:ring-[#3a153d]/40"
+                className="h-[52px] w-full rounded-[12px] border border-black/10 bg-white px-5 text-[15px] outline-none placeholder:text-[#8a8f98] focus:ring-1 focus:ring-[#4b1d58]/40 shadow-sm"
               />
+              <div className="h-[16px] w-full block clear-both" aria-hidden="true" />
 
               <input
                 type="email"
                 placeholder="Email Address"
-                className="h-[44px] w-full rounded-[10px] border border-black/10 bg-[#f4f2f6] px-4 text-[14px] outline-none placeholder:text-[#8a8f98] focus:ring-1 focus:ring-[#3a153d]/40"
+                className="h-[52px] w-full rounded-[12px] border border-black/10 bg-white px-5 text-[15px] outline-none placeholder:text-[#8a8f98] focus:ring-1 focus:ring-[#4b1d58]/40 shadow-sm"
               />
+              <div className="h-[16px] w-full block clear-both" aria-hidden="true" />
 
               <input
                 type="text"
                 placeholder="Phone Number"
-                className="h-[44px] w-full rounded-[10px] border border-black/10 bg-[#f4f2f6] px-4 text-[14px] outline-none placeholder:text-[#8a8f98] focus:ring-1 focus:ring-[#3a153d]/40"
+                className="h-[52px] w-full rounded-[12px] border border-black/10 bg-white px-5 text-[15px] outline-none placeholder:text-[#8a8f98] focus:ring-1 focus:ring-[#4b1d58]/40 shadow-sm"
               />
+              <div className="h-[16px] w-full block clear-both" aria-hidden="true" />
 
               <div className="relative">
                 <input
                   type="text"
                   placeholder="Location"
-                  className="h-[44px] w-full rounded-[10px] border border-black/10 bg-[#f4f2f6] px-4 pr-10 text-[14px] outline-none placeholder:text-[#8a8f98] focus:ring-1 focus:ring-[#3a153d]/40"
+                  className="h-[52px] w-full rounded-[12px] border border-black/10 bg-white px-5 text-[15px] outline-none placeholder:text-[#8a8f98] focus:ring-1 focus:ring-[#4b1d58]/40 shadow-sm"
                 />
-                <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[13px] text-[#7b8190]">
-                  🌍
-                </span>
               </div>
             </div>
+            <div className="h-[32px] w-full block clear-both" aria-hidden="true" />
 
-            <button className="mt-8 w-full md:w-auto rounded-full bg-[#3a153d] px-10 py-3 text-[14px] font-semibold tracking-wide text-white transition-all hover:bg-[#5a255d]">
-              CREATE AUTHOR ACCOUNT
-            </button>
+          {/* MAXIMUM BOLD: The "High-Impact" Fat Button */}
+<div className="mt-12 flex justify-center w-full">
+  <button className="h-[64px] px-16 rounded-full bg-[#4b1d58] flex items-center justify-center text-[16px] font-black uppercase tracking-[-0.02em] text-white shadow-xl transition-all hover:scale-105 hover:bg-[#5b246a] active:scale-95 border-b-2 border-black/10">
+    Create Author Account
+  </button>
+</div>
           </motion.div>
         </div>
       </section>

@@ -24,7 +24,8 @@ export default function About() {
               WHAT IS SHELFIE
             </h2>
 
-            <p className="mt-6 text-[16px] uppercase tracking-[0.3em] text-[#d56600]">
+            {/* UPDATED: text-[26px] for a much larger, bolder subtitle */}
+            <p className="mt-6 text-[22px] uppercase tracking-[-0.05em] text-[#4b1d58] font-black leading-tight">
               A SHARED SPACE FOR READERS AND WRITERS
             </p>
           </motion.div>
@@ -37,16 +38,22 @@ export default function About() {
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             className="w-[52%]"
           >
-            <h3 className="text-[34px] font-semibold leading-[1.35] text-[#1f1f1f]">
-              Shelfie is an interactive storytelling platform built for both
-              readers and writers.
+            {/* HIGHLIGHTED SUBHEADING */}
+            <h3 className="text-[28px] font-semibold leading-[1.4] text-[#1f1f1f]">
+              <span className="bg-[#f7f4ee] px-2 py-1 rounded-md inline decoration-clone">
+                Shelfie is an interactive storytelling platform built for both
+                readers and writers.
+              </span>
             </h3>
 
-            <p className="mt-8 text-[18px] leading-[1.8] text-[#5b6472]">
-              Writers can share their books, stories, and ideas, while readers can
-              engage directly with authors through meaningful interactions. Unlike
-              traditional eBooks platforms, Shelfie focuses on connection,
-              dialogue, and community, not just content distribution.
+            {/* HIGHLIGHTED BODY TEXT */}
+            <p className="mt-8 text-[18px] leading-[1.8] tracking-tight font-bold text-black">
+              <span className="bg-[#f7f4ee] px-2 py-1 rounded-md inline decoration-clone">
+                Writers can share their books, stories, and ideas, while readers can
+                engage directly with authors through meaningful interactions. Unlike
+                traditional eBooks platforms, Shelfie focuses on connection,
+                dialogue, and community, not just content distribution.
+              </span>
             </p>
 
             <div className="mt-12 h-[3px] w-16 bg-[#d8a878]" />
@@ -54,7 +61,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* 3 LINES OF EMPTY SPACE (160px) */}
+      {/* 3 LINES OF EMPTY SPACE (96px) */}
       <div className="h-[96px] w-full block clear-both" aria-hidden="true" />
     </>
   );

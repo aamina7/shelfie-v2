@@ -1,18 +1,20 @@
 "use client";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function Writers() {
   const sectionRef = useRef(null);
   const imageRef = useRef(null);
 
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    
     const ctx = gsap.context(() => {
-      // 1. STAGGERED REVEAL SYSTEM
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top 75%", // Starts when section is 75% down the viewport
+          start: "top 75%",
           toggleActions: "play none none none",
         }
       });
@@ -34,8 +36,8 @@ export default function Writers() {
         scale: 0.9,
         opacity: 0,
         duration: 0.8,
-        stagger: 0.2, // Cards pop one after another
-        ease: "back.out(1.7)" // Adds a slight "boutique" bounce
+        stagger: 0.2,
+        ease: "back.out(1.7)"
       }, "-=0.6")
       .from(".store-btn", {
         x: -20,
@@ -44,9 +46,8 @@ export default function Writers() {
         duration: 0.8
       }, "-=0.4");
 
-      // 2. PARALLAX DEPTH (The Right Image)
       gsap.to(imageRef.current, {
-        y: -60, // Moves upward as you scroll down
+        y: -60,
         ease: "none",
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -62,7 +63,7 @@ export default function Writers() {
 
   return (
     <>
-      <section ref={sectionRef} className="bg-[#f7f4ee] px-6 py-28 md:px-10 lg:px-14 overflow-hidden">
+      <section ref={sectionRef} className="bg-transparent px-6 py-28 md:px-10 lg:px-14 overflow-hidden">
         <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-20">
           
           {/* LEFT CONTENT */}
@@ -76,52 +77,62 @@ export default function Writers() {
               </h2>
             </div>
 
-            <p className="writer-text mt-8 text-[18px] text-[#1f1f1f] font-medium">
-              Shelfie helps emerging & established writers go beyond publishing.
+            {/* HIGHLIGHTED PARAGRAPH 1 */}
+            <p className="writer-text mt-8 text-[22px] text-black font-bold leading-[1.8]">
+              <span className="bg-[#f7f4ee] px-2 py-1 rounded-md inline decoration-clone">
+                Shelfie helps emerging & established writers go beyond publishing.
+              </span>
             </p>
 
-            <p className="writer-text mt-4 max-w-[600px] text-[17px] leading-[1.8] text-[#5b6472]">
-              Share your stories, connect directly with readers, and build a
-              community around your work. Our platform is designed to turn passive
-              readers into active participants in your creative journey.
+            {/* HIGHLIGHTED PARAGRAPH 2 */}
+            <p className="writer-text mt-4 max-w-[600px] text-[17px] leading-[1.8] text-black/80 font-medium">
+              <span className="bg-[#f7f4ee] px-2 py-1 rounded-md inline decoration-clone">
+                Share your stories, connect directly with readers, and build a
+                community around your work. Our platform is designed to turn passive
+                readers into active participants in your creative journey.
+              </span>
             </p>
 
-            {/* STAGGERED CARDS */}
-            <div className="mt-12 flex mb-12" style={{ gap: '24px' }}> 
-              <div className="writer-card rounded-[20px] p-8 w-[280px] bg-[#3a153d]">
-                <h3 className="text-[18px] font-bold tracking-wide text-white m-0">
-                  DIRECT CONNECTION
-                </h3>
-                <p className="mt-3 text-[14px] leading-relaxed text-white/90">
-                  Talk to your audience without intermediaries.
-                </p>
-              </div>
+          {/* STAGGERED CARDS */}
+<div className="mt-12 flex mb-12" style={{ gap: '24px' }}> 
+  
+  {/* Card 1: Updated to Signature Purple #4b1d58 */}
+  <div className="writer-card rounded-[24px] p-8 w-[280px] bg-[#4b1d58] backdrop-blur-md border border-white/10 shadow-xl">
+    <h3 className="text-[18px] font-black tracking-tighter text-white m-0">
+      DIRECT CONNECTION
+    </h3>
+    <p className="mt-3 text-[14px] leading-relaxed text-white">
+      Talk to your audience without intermediaries.
+    </p>
+  </div>
 
-              <div className="writer-card rounded-[20px] p-8 w-[280px] bg-[#3a153d]">
-                <h3 className="text-[18px] font-bold tracking-wide text-white m-0">
-                  COMMUNITY BUILDING
-                </h3>
-                <p className="mt-3 text-[14px] leading-relaxed text-white/90">
-                  Foster a loyal following that grows with every chapter.
-                </p>
-              </div>
-            </div>
+  {/* Card 2: Updated to Signature Purple #4b1d58 */}
+  <div className="writer-card rounded-[24px] p-8 w-[280px] bg-[#4b1d58] backdrop-blur-md border border-white/10 shadow-xl">
+    <h3 className="text-[18px] font-black tracking-tighter text-white m-0">
+      COMMUNITY BUILDING
+    </h3>
+    <p className="mt-3 text-[14px] leading-relaxed text-white">
+      Foster a loyal following that grows with every chapter.
+    </p>
+  </div>
+</div>
+<div className="h-[32px] w-full block clear-both" aria-hidden="true" />
 
             {/* STORE BUTTONS */}
             <div className="flex gap-4">
-              <img src="/images/app-store.svg" alt="App Store" className="store-btn h-[52px] cursor-pointer" />
-              <img src="/images/google-play.png" alt="Google Play" className="store-btn h-[52px] cursor-pointer" />
+              <img src="/images/app-store.svg" alt="App Store" className="store-btn h-[52px] cursor-pointer hover:scale-105 transition-transform" />
+              <img src="/images/google-play.png" alt="Google Play" className="store-btn h-[52px] cursor-pointer hover:scale-105 transition-transform" />
             </div>
           </div>
 
           {/* RIGHT IMAGE WITH PARALLAX */}
           <div className="w-[40%] flex justify-end">
             <div ref={imageRef} className="relative">
-              <div className="absolute -right-4 top-4 h-full w-full rounded-[24px] bg-[#ece2d5]" />
+              <div className="absolute -right-4 top-4 h-full w-full rounded-[24px] bg-black/20 blur-xl" />
               <img
                 src="/images/book2.jpeg"
                 alt="Book Cover"
-                className="relative z-10 h-[520px] w-[360px] rounded-[24px] object-cover shadow-2xl"
+                className="relative z-10 h-[520px] w-[360px] rounded-[24px] object-cover shadow-2xl border border-white/10"
               />
             </div>
           </div>

@@ -60,7 +60,7 @@ export default function Articles() {
 
   return (
     <>
-      <section ref={sectionRef} className="bg-transparent px-6 py-28 md:px-10 lg:px-14">
+      <section ref={sectionRef} className="bg-[#f7f4ee]/50 px-6 py-28 md:px-10 lg:px-14">
         <div className="mx-auto max-w-[1200px]">
 
           {/* Heading */}

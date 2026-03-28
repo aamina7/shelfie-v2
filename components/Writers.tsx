@@ -63,7 +63,8 @@ export default function Writers() {
 
   return (
     <>
-      <section ref={sectionRef} className="bg-transparent px-6 py-28 md:px-10 lg:px-14 overflow-hidden">
+      {/* UPDATED: Added id="author-join" for auto-scroll functionality */}
+      <section id="author-join" ref={sectionRef} className="bg-transparent px-6 py-28 md:px-10 lg:px-14 overflow-hidden">
         <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-20">
           
           {/* LEFT CONTENT */}
@@ -94,34 +95,35 @@ export default function Writers() {
             </p>
 
           {/* STAGGERED CARDS */}
-<div className="mt-12 flex mb-12" style={{ gap: '24px' }}> 
-  
-  {/* Card 1: Updated to Signature Purple #4b1d58 */}
-  <div className="writer-card rounded-[24px] p-8 w-[280px] bg-[#4b1d58] backdrop-blur-md border border-white/10 shadow-xl">
-    <h3 className="text-[18px] font-black tracking-tighter text-white m-0">
-      DIRECT CONNECTION
-    </h3>
-    <p className="mt-3 text-[14px] leading-relaxed text-white">
-      Talk to your audience without intermediaries.
-    </p>
-  </div>
+          <div className="mt-12 flex mb-12" style={{ gap: '24px' }}> 
+            <div className="writer-card rounded-[24px] p-8 w-[280px] bg-[#4b1d58] backdrop-blur-md border border-white/10 shadow-xl">
+              <h3 className="text-[18px] font-black tracking-tighter text-white m-0">
+                DIRECT CONNECTION
+              </h3>
+              <p className="mt-3 text-[14px] leading-relaxed text-white">
+                Talk to your audience without intermediaries.
+              </p>
+            </div>
 
-  {/* Card 2: Updated to Signature Purple #4b1d58 */}
-  <div className="writer-card rounded-[24px] p-8 w-[280px] bg-[#4b1d58] backdrop-blur-md border border-white/10 shadow-xl">
-    <h3 className="text-[18px] font-black tracking-tighter text-white m-0">
-      COMMUNITY BUILDING
-    </h3>
-    <p className="mt-3 text-[14px] leading-relaxed text-white">
-      Foster a loyal following that grows with every chapter.
-    </p>
-  </div>
-</div>
-<div className="h-[32px] w-full block clear-both" aria-hidden="true" />
+            <div className="writer-card rounded-[24px] p-8 w-[280px] bg-[#4b1d58] backdrop-blur-md border border-white/10 shadow-xl">
+              <h3 className="text-[18px] font-black tracking-tighter text-white m-0">
+                COMMUNITY BUILDING
+              </h3>
+              <p className="mt-3 text-[14px] leading-relaxed text-white">
+                Foster a loyal following that grows with every chapter.
+              </p>
+            </div>
+          </div>
+          <div className="h-[32px] w-full block clear-both" aria-hidden="true" />
 
-            {/* STORE BUTTONS */}
+            {/* UPDATED: Added direct store links */}
             <div className="flex gap-4">
-              <img src="/images/app-store.svg" alt="App Store" className="store-btn h-[52px] cursor-pointer hover:scale-105 transition-transform" />
-              <img src="/images/google-play.png" alt="Google Play" className="store-btn h-[52px] cursor-pointer hover:scale-105 transition-transform" />
+              <a href="https://apps.apple.com/in/app/shelfie-author/id6758301712" target="_blank" rel="noopener noreferrer">
+                <img src="/images/app-store.svg" alt="App Store" className="store-btn h-[52px] cursor-pointer hover:scale-105 transition-transform" />
+              </a>
+              <a href="https://play.google.com/store/apps/details?id=com.jac.authorapp" target="_blank" rel="noopener noreferrer">
+                <img src="/images/google-play.png" alt="Google Play" className="store-btn h-[52px] cursor-pointer hover:scale-105 transition-transform" />
+              </a>
             </div>
           </div>
 

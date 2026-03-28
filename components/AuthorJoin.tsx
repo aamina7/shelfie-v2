@@ -19,7 +19,8 @@ export default function AuthorJoin() {
 
   return (
     <>
-      <section className="bg-transparent px-6 py-24 md:px-10 lg:px-14 font-sans">
+      {/* UPDATED: Added id="authorjoin" to match your Navbar's scroll function */}
+      <section id="authorjoin" className="bg-transparent px-6 py-24 md:px-10 lg:px-14 font-sans">
         <div className="mx-auto flex max-w-[1100px] items-center justify-between gap-14">
           
           {/* LEFT PHONE IMAGE */}
@@ -57,7 +58,6 @@ export default function AuthorJoin() {
               Start your storytelling journey with Shelfie today.
             </p>
 
-            {/* UPDATED: Increased gap-y-6 for the specific spacing in your screenshot */}
             <div className="mt-10 flex flex-col gap-y-6">
               <input
                 type="text"
@@ -90,12 +90,12 @@ export default function AuthorJoin() {
             </div>
             <div className="h-[32px] w-full block clear-both" aria-hidden="true" />
 
-          {/* MAXIMUM BOLD: The "High-Impact" Fat Button */}
-<div className="mt-12 flex justify-center w-full">
-  <button className="h-[64px] px-16 rounded-full bg-[#4b1d58] flex items-center justify-center text-[16px] font-black uppercase tracking-[-0.02em] text-white shadow-xl transition-all hover:scale-105 hover:bg-[#5b246a] active:scale-95 border-b-2 border-black/10">
-    Create Author Account
-  </button>
-</div>
+            {/* MAXIMUM BOLD: The "High-Impact" Fat Button */}
+            <div className="mt-12 flex justify-center w-full">
+              <button className="h-[64px] px-16 rounded-full bg-[#4b1d58] flex items-center justify-center text-[16px] font-black uppercase tracking-[-0.02em] text-white shadow-xl transition-all hover:scale-105 hover:bg-[#5b246a] active:scale-95 border-b-2 border-black/10">
+                Create Author Account
+              </button>
+            </div>
           </motion.div>
         </div>
       </section>

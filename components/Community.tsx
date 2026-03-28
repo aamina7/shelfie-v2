@@ -23,7 +23,8 @@ export default function Community() {
 
   return (
     <>
-      <section className="bg-transparent px-6 py-20 md:px-10 lg:px-14">
+      {/* UPDATED: Added id="community" so the Navbar can find this section */}
+      <section id="community" className="bg-transparent px-6 py-20 md:px-10 lg:px-14">
         <div className="mx-auto flex max-w-[1200px] items-start justify-between">
           
           {/* LEFT SIDE: IMAGE */}
@@ -69,9 +70,7 @@ export default function Community() {
                     ${index === 0 ? "rounded-t-xl" : ""} 
                     ${index === listItems.length - 1 ? "rounded-b-xl border-b-0" : ""}`}
                 >
-                  {/* UPDATED: Reduced ID font size */}
                   <span className="text-[15px] font-bold text-[#c85f00]">{item.id}</span>
-                  {/* UPDATED: Reduced Text font size */}
                   <p className="text-[15px] text-[#1f1f1f]">{item.text}</p>
                 </motion.div>
               ))}
@@ -100,9 +99,33 @@ export default function Community() {
               </div>
             </motion.div>
 
+            {/* UPDATED: Added real store links */}
             <div className="mt-12 flex items-center gap-6">
-              <motion.img whileHover={{ y: -5 }} src="/images/app-store.svg" alt="App Store" className="h-[52px] cursor-pointer" />
-              <motion.img whileHover={{ y: -5 }} src="/images/google-play.png" alt="Google Play" className="h-[52px] cursor-pointer" />
+              <a 
+                href="https://apps.apple.com/in/app/shelfie-reader/id6758462759" 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                <motion.img 
+                  whileHover={{ y: -5 }} 
+                  src="/images/app-store.svg" 
+                  alt="App Store" 
+                  className="h-[52px] cursor-pointer" 
+                />
+              </a>
+              
+              <a 
+                href="https://play.google.com/store/apps/details?id=com.jac.readerapp" 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                <motion.img 
+                  whileHover={{ y: -5 }} 
+                  src="/images/google-play.png" 
+                  alt="Google Play" 
+                  className="h-[52px] cursor-pointer" 
+                />
+              </a>
             </div>
           </div>
         </div>

@@ -1,3 +1,5 @@
+"use client";
+import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import LibraryScroll from "@/components/LibraryScroll";
@@ -10,35 +12,40 @@ import Articles from "@/components/Articles";
 import Newsletter from "@/components/Newsletter";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
+import HeroDialogueBox from "@/components/HeroDialogueBox";
 
 export default function Home() {
+  // 1. This state controls if the box is visible
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
   return (
-    <main className="relative bg-[#f7f4ee]">
+    <main className="relative bg-[#f7f4ee] min-h-screen">
+      {/* 2. The SmoothScroll handles the background animations */}
       <SmoothScroll>
         <LibraryScroll />
 
-        <div className="relative z-10">
+        <div className="relative z-10 w-full bg-transparent">
+          <Navbar />
           
-          {/* EXTENDED TRANSPARENT ZONE: Library shows through all these */}
-          <div id="transparent-zone" className="bg-transparent">
-            <Navbar />
-            <Hero />
-            <Features />
-            <About /> {/* Now part of the library experience */}
-            <Community />
-            <Writers />
-            <AuthorJoin />
-            <Articles />
-            <Newsletter />
-            <Footer />
-          </div>
-
-          {/* SOLID ZONE: The background "shuts" here */}
-          <div className="relative z-20 bg-[#f7f4ee] shadow-[0_-50px_100px_rgba(0,0,0,0.12)]">
-            
-          </div>
+          {/* 3. We pass the command to open the box to the Hero */}
+          <Hero onOpenDialog={() => setIsDialogOpen(true)} />
+          
+          <Features />
+          <About />
+          <Community />
+          <Writers />
+          <AuthorJoin />
+          <Articles />
+          <Newsletter />
+          <Footer />
         </div>
       </SmoothScroll>
+
+      {/* 4. IMPORTANT: The box is OUTSIDE SmoothScroll so it doesn't get "stuck" */}
+      <HeroDialogueBox 
+        isOpen={isDialogOpen} 
+        onClose={() => setIsDialogOpen(false)} 
+      />
     </main>
   );
 }

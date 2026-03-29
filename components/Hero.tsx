@@ -63,7 +63,6 @@ export default function Hero({ onOpenDialog }: { onOpenDialog: () => void }) {
                 </h1>
               </div>
               
-              {/* Added relative z-30 and isolate to keep the button on top */}
               <div className="reveal-sub relative z-30 isolate">
                 <p className="mt-6 text-[18px] text-black leading-[1.8] max-w-[560px] font-medium">
                   <span className="bg-[#f7f4ee] px-2 py-1 rounded-md inline decoration-clone">
@@ -71,14 +70,25 @@ export default function Hero({ onOpenDialog }: { onOpenDialog: () => void }) {
                   </span>
                 </p>
                 
-                {/* DIRECT EVENT HANDLER: e.stopPropagation() stops other layers from blocking the click */}
+                {/* FORCED UPDATE: 
+                  We use minWidth and minHeight in the style tag to ensure 
+                  the button grows even if Tailwind is being blocked.
+                */}
                 <button 
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
                     onOpenDialog();
                   }} 
-                  className="mt-10 rounded-full bg-[#c85f00] px-28 py-11 text-[14px] text-white font-bold uppercase tracking-tighter transition-all hover:scale-105 active:scale-95 shadow-lg flex items-center justify-center cursor-pointer pointer-events-auto relative overflow-hidden"
+                  style={{ 
+                    color: '#ffffff', 
+                    minWidth: '280px', 
+                    minHeight: '50px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}
+                  className="mt-10 rounded-full bg-[#d56600] text-[18px] font-black uppercase tracking-tight transition-all hover:scale-105 active:scale-95 shadow-2xl cursor-pointer pointer-events-auto relative overflow-hidden"
                 >
                   Get Started on Shelfie
                 </button>

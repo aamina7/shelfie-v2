@@ -40,14 +40,14 @@ html.lenis body {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(calc(-50% - 1rem));
+    /* Changed from -50% - 1rem to just -50% to stay perfectly in sync with the gap */
+    transform: translateX(-50%);
   }
 }
 
 .marquee-container {
   overflow: hidden;
   position: relative;
-  /* Masking creates the "fade-out" luxury effect at edges */
   mask-image: linear-gradient(
     to right,
     transparent,
@@ -67,7 +67,9 @@ html.lenis body {
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee 25s linear infinite;
+  /* ADDED GAP HERE: Forces the spacing at the CSS level */
+  gap: 2.5rem; 
+  animation: marquee 30s linear infinite;
   will-change: transform;
 }
 

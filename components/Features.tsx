@@ -17,11 +17,11 @@ export default function Features() {
       {/* 1. THE FEATURE SECTION */}
       <section className="bg-transparent mt-24 py-10">
         
-        {/* Added the marquee-container for the luxury fade-out effect */}
-        <div className="marquee-container w-full">
+        <div className="marquee-container w-full overflow-hidden">
           <div className="marquee-track flex">
-            {/* We duplicate the array to ensure a seamless infinite loop */}
+            {/* Duplicating for seamless loop */}
             {[...genres, ...genres, ...genres].map((genre, index) => (
+              /* UPDATED: Changed px-8 to px-6 to reduce the gap slightly */
               <div key={`${genre.title}-${index}`} className="px-4 shrink-0">
                 <div
                   className={`flex h-[180px] w-[160px] flex-col items-center justify-center rounded-[26px] border-2 bg-[#f7f4ee] transition-transform duration-500 hover:scale-105 ${genre.border}`}

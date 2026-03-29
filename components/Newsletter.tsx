@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 // IMPORT THE ICONS
-import { FaXTwitter, FaInstagram, FaFacebookF, FaLinkedinIn } from "react-icons/fa6";
+import { FaXTwitter, FaInstagram, FaFacebookF, FaLinkedinIn, FaArrowRight } from "react-icons/fa6";
 
 export default function Newsletter() {
   const [email, setEmail] = useState("");
@@ -14,19 +14,13 @@ export default function Newsletter() {
     { icon: <FaLinkedinIn />, label: "IN", url: "https://www.linkedin.com/company/hey-shelfie/" },
   ];
 
-  // FUNCTION TO HANDLE SCROLL TO TOP
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Check if email is filled (optional validation)
     if (email.trim() !== "") {
-      // Smooth scroll to the top of the page (where the Navbar is)
       window.scrollTo({
         top: 0,
         behavior: "smooth",
       });
-
-      // Optional: Clear the email field after "subscribing"
       setEmail("");
     }
   };
@@ -72,7 +66,7 @@ export default function Newsletter() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="mx-auto mt-12 max-w-[560px] rounded-[20px] bg-[#f7f4ee] px-8 py-20 shadow-sm"
+            className="mx-auto mt-12 max-w-[520px] rounded-[20px] bg-[#f7f4ee] px-8 py-20 shadow-sm"
           >
             <div className="mb-8 text-[13px] font-semibold tracking-[0.2em] text-[#d56600]">
               <div className="h-[16px] w-full block clear-both" aria-hidden="true" />
@@ -80,8 +74,8 @@ export default function Newsletter() {
             </div>
             <div className="h-[16px] w-full block clear-both" aria-hidden="true" />
             
-            {/* WRAPPED IN FORM FOR SUBMISSION LOGIC */}
-            <form onSubmit={handleSubscribe} className="flex items-center gap-4">
+            {/* UPDATED: Added mx-auto and max-w-[400px] to the form to decrease input box width */}
+            <form onSubmit={handleSubscribe} className="flex items-center gap-4 mx-auto max-w-[400px]">
               <input
                 required
                 type="email"
@@ -90,11 +84,15 @@ export default function Newsletter() {
                 placeholder="Enter your email address"
                 className="h-[48px] flex-1 rounded-full border border-black/5 bg-white/90 px-5 text-[14px] outline-none placeholder:text-gray-400 focus:border-[#d56600] transition-all"
               />
+              {/* UPDATED: Forced white color using !text-white and inline style fill */}
               <button 
                 type="submit"
-                className="flex h-[48px] w-[48px] items-center justify-center rounded-full bg-[#3a153d] text-white text-[18px] transition-transform hover:scale-110 active:scale-95"
+                className="flex h-[48px] w-[48px] items-center justify-center rounded-full bg-[#4b1d58] transition-transform hover:scale-110 active:scale-95 shadow-lg border-none outline-none"
               >
-                →
+                <FaArrowRight 
+                  style={{ color: '#ffffff', fill: '#ffffff' }} 
+                  className="text-[20px] !text-white" 
+                />
               </button>
             </form>
             <div className="h-[32px] w-full block clear-both" aria-hidden="true" />

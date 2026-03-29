@@ -63,11 +63,9 @@ export default function Writers() {
 
   return (
     <>
-      {/* UPDATED: Added id="author-join" for auto-scroll functionality */}
       <section id="author-join" ref={sectionRef} className="bg-transparent px-6 py-28 md:px-10 lg:px-14 overflow-hidden">
         <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-20">
           
-          {/* LEFT CONTENT */}
           <div className="w-[60%]">
             <div className="overflow-hidden">
               <h2
@@ -78,14 +76,12 @@ export default function Writers() {
               </h2>
             </div>
 
-            {/* HIGHLIGHTED PARAGRAPH 1 */}
             <p className="writer-text mt-8 text-[22px] text-black font-bold leading-[1.8]">
               <span className="bg-[#f7f4ee] px-2 py-1 rounded-md inline decoration-clone">
                 Shelfie helps emerging & established writers go beyond publishing.
               </span>
             </p>
 
-            {/* HIGHLIGHTED PARAGRAPH 2 */}
             <p className="writer-text mt-4 max-w-[600px] text-[17px] leading-[1.8] text-black/80 font-medium">
               <span className="bg-[#f7f4ee] px-2 py-1 rounded-md inline decoration-clone">
                 Share your stories, connect directly with readers, and build a
@@ -94,29 +90,37 @@ export default function Writers() {
               </span>
             </p>
 
-          {/* STAGGERED CARDS */}
-          <div className="mt-12 flex mb-12" style={{ gap: '24px' }}> 
-            <div className="writer-card rounded-[24px] p-8 w-[280px] bg-[#4b1d58] backdrop-blur-md border border-white/10 shadow-xl">
-              <h3 className="text-[18px] font-black tracking-tighter text-white m-0">
-                DIRECT CONNECTION
-              </h3>
-              <p className="mt-3 text-[14px] leading-relaxed text-white">
-                Talk to your audience without intermediaries.
-              </p>
+          <div className="mt-12 flex mb-12" style={{ gap: '28px' }}> 
+            
+            {/* CARD 1 */}
+            <div className="writer-card rounded-[24px] px-10 py-12 w-[300px] h-[140px] bg-[#4b1d58] border border-white/10 shadow-xl flex flex-col justify-center items-center text-center">
+              {/* FIXED: Wrapped in a div so justify-center doesn't pull them apart */}
+              <div>
+                <h3 style={{ color: '#ffffff' }} className="text-[20px] font-black tracking-tighter m-0 uppercase">
+                  DIRECT CONNECTION
+                </h3>
+                <p style={{ color: '#ffffff' }} className="mt-1 text-[15px] leading-relaxed opacity-90 m-0">
+                  Talk to your audience without intermediaries.
+                </p>
+              </div>
             </div>
 
-            <div className="writer-card rounded-[24px] p-8 w-[280px] bg-[#4b1d58] backdrop-blur-md border border-white/10 shadow-xl">
-              <h3 className="text-[18px] font-black tracking-tighter text-white m-0">
-                COMMUNITY BUILDING
-              </h3>
-              <p className="mt-3 text-[14px] leading-relaxed text-white">
-                Foster a loyal following that grows with every chapter.
-              </p>
+            {/* CARD 2 */}
+            <div className="writer-card rounded-[24px] px-10 py-12 w-[300px] h-[140px] bg-[#4b1d58] border border-white/10 shadow-xl flex flex-col justify-center items-center text-center">
+              <div>
+                <h3 style={{ color: '#ffffff' }} className="text-[20px] font-black tracking-tighter m-0 uppercase">
+                  COMMUNITY BUILDING
+                </h3>
+                <p style={{ color: '#ffffff' }} className="mt-1 text-[15px] leading-relaxed opacity-90 m-0">
+                  Foster a loyal following that grows with every chapter.
+                </p>
+              </div>
             </div>
+
           </div>
+          
           <div className="h-[32px] w-full block clear-both" aria-hidden="true" />
 
-            {/* UPDATED: Added direct store links */}
             <div className="flex gap-4">
               <a href="https://apps.apple.com/in/app/shelfie-author/id6758301712" target="_blank" rel="noopener noreferrer">
                 <img src="/images/app-store.svg" alt="App Store" className="store-btn h-[52px] cursor-pointer hover:scale-105 transition-transform" />
@@ -127,7 +131,6 @@ export default function Writers() {
             </div>
           </div>
 
-          {/* RIGHT IMAGE WITH PARALLAX */}
           <div className="w-[40%] flex justify-end">
             <div ref={imageRef} className="relative">
               <div className="absolute -right-4 top-4 h-full w-full rounded-[24px] bg-black/20 blur-xl" />

@@ -42,8 +42,10 @@ export default function Footer() {
 
         {/* TEXT with Slide Reveal & Beige Highlight */}
         <div className="overflow-hidden">
-          <p className="footer-text text-[14px] text-[#6b7280] tracking-wide">
-            <span className="bg-[#f7f4ee] px-4 py-2 rounded-md inline-block decoration-clone">
+          {/* UPDATED: Changed parent p tag color to text-black to ensure inheritance */}
+          <p className="footer-text text-[14px] text-black tracking-wide">
+            {/* UPDATED: Added inline style to force black color no matter what */}
+            <span style={{ color: 'black' }} className="bg-[#f7f4ee] px-4 py-2 rounded-md inline-block decoration-clone">
               A product by{" "}
               {/* UPDATED: Added link to JAC Magnus */}
               <a 

@@ -1,19 +1,39 @@
 "use client";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 // IMPORT THE ICONS
 import { FaXTwitter, FaInstagram, FaFacebookF, FaLinkedinIn } from "react-icons/fa6";
 
 export default function Newsletter() {
+  const [email, setEmail] = useState("");
+
   const socialLinks = [
-    { icon: <FaXTwitter />, label: "X" },
-    { icon: <FaInstagram />, label: "IG" },
-    { icon: <FaFacebookF />, label: "F" },
-    { icon: <FaLinkedinIn />, label: "IN" },
+    { icon: <FaXTwitter />, label: "X", url: "https://x.com/Hey_Shelfie" },
+    { icon: <FaInstagram />, label: "IG", url: "https://www.instagram.com/hey_shelfie/" },
+    { icon: <FaFacebookF />, label: "F", url: "https://www.facebook.com/people/Shelfie/61585156689821/?mibextid=wwXIfr&rdid=73NYsHgcCj1eYHfo&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1GHRh2S11j%2F%3Fmibextid%3DwwXIfr" },
+    { icon: <FaLinkedinIn />, label: "IN", url: "https://www.linkedin.com/company/hey-shelfie/" },
   ];
+
+  // FUNCTION TO HANDLE SCROLL TO TOP
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Check if email is filled (optional validation)
+    if (email.trim() !== "") {
+      // Smooth scroll to the top of the page (where the Navbar is)
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+
+      // Optional: Clear the email field after "subscribing"
+      setEmail("");
+    }
+  };
 
   return (
     <>
-      <section className="bg-transparent px-6 py-28 md:px-10 lg:px-14">
+      <section className="bg-transparent px-6 py-28 md:px-10 lg:px-14 font-sans">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -46,7 +66,7 @@ export default function Newsletter() {
 
           <div className="h-[32px] w-full block clear-both" aria-hidden="true" />
 
-          {/* NEWSLETTER BOX - FIXED: Changed parent <p> to <div> */}
+          {/* NEWSLETTER BOX */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -54,30 +74,37 @@ export default function Newsletter() {
             transition={{ delay: 0.2, duration: 0.6 }}
             className="mx-auto mt-12 max-w-[560px] rounded-[20px] bg-[#f7f4ee] px-8 py-20 shadow-sm"
           >
-            {/* FIXED: Swapped <p> for <div> to allow internal div spacers */}
             <div className="mb-8 text-[13px] font-semibold tracking-[0.2em] text-[#d56600]">
               <div className="h-[16px] w-full block clear-both" aria-hidden="true" />
               SUBSCRIBE TO OUR NEWSLETTER
             </div>
             <div className="h-[16px] w-full block clear-both" aria-hidden="true" />
-            <div className="flex items-center gap-4">
+            
+            {/* WRAPPED IN FORM FOR SUBMISSION LOGIC */}
+            <form onSubmit={handleSubscribe} className="flex items-center gap-4">
               <input
+                required
                 type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email address"
                 className="h-[48px] flex-1 rounded-full border border-black/5 bg-white/90 px-5 text-[14px] outline-none placeholder:text-gray-400 focus:border-[#d56600] transition-all"
               />
-              <button className="flex h-[48px] w-[48px] items-center justify-center rounded-full bg-[#3a153d] text-white text-[18px] transition-transform hover:scale-110 active:scale-95">
+              <button 
+                type="submit"
+                className="flex h-[48px] w-[48px] items-center justify-center rounded-full bg-[#3a153d] text-white text-[18px] transition-transform hover:scale-110 active:scale-95"
+              >
                 →
               </button>
-            </div>
+            </form>
             <div className="h-[32px] w-full block clear-both" aria-hidden="true" />
           </motion.div>
 
-          {/* CONTACT - FIXED: Changed parent <p> to <div> */}
+          {/* CONTACT */}
           <div className="h-[32px] w-full block clear-both" aria-hidden="true" />
           <div className="mt-10">
             <div className="text-[14px] font-bold text-black">
-              <span className="bg-[#f7f4ee] px-4 py-2 rounded-md inline-block decoration-clone">
+              <span className="bg-[#f7f4ee] px-4 py-2 rounded-md inline-block">
                 Let’s connect at{" "}
                 <span className="text-[#d56600] font-black hover:underline cursor-pointer">
                   hello@shelfiebooks.in
@@ -86,19 +113,22 @@ export default function Newsletter() {
             </div>
           </div>
 
-          {/* SOCIAL ICONS - UPDATED SECTION */}
+          {/* SOCIAL ICONS */}
           <div className="h-[32px] w-full block clear-both" aria-hidden="true" />
-      <div className="mt-8 flex justify-center gap-6">
-        {socialLinks.map((item, i) => (
-          <motion.div
-            key={i}
-            whileHover={{ y: -5 }}
-            className="flex h-[42px] w-[42px] cursor-pointer items-center justify-center rounded-full bg-[#ede7f3] text-[#4b1d58] text-[18px] transition-colors hover:bg-[#4b1d58] hover:text-white shadow-sm"
-          >
-            {item.icon}
-          </motion.div>
-        ))}
-      </div>
+          <div className="mt-8 flex justify-center gap-6">
+            {socialLinks.map((item, i) => (
+              <motion.a
+                key={i}
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ y: -5 }}
+                className="flex h-[42px] w-[42px] cursor-pointer items-center justify-center rounded-full bg-[#ede7f3] text-[#4b1d58] text-[18px] transition-colors hover:bg-[#4b1d58] hover:text-white shadow-sm"
+              >
+                {item.icon}
+              </motion.a>
+            ))}
+          </div>
 
         </motion.div>
       </section>

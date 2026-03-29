@@ -18,6 +18,7 @@ export default function Footer() {
       tl.from(".footer-line", {
         scaleX: 0,
         duration: 1.5,
+        // Using power4.inOut for that smooth reveal
         ease: "power4.inOut",
       })
       .from(".footer-text", {
@@ -44,9 +45,15 @@ export default function Footer() {
           <p className="footer-text text-[14px] text-[#6b7280] tracking-wide">
             <span className="bg-[#f7f4ee] px-4 py-2 rounded-md inline-block decoration-clone">
               A product by{" "}
-              <span className="text-[#d56600] font-semibold uppercase tracking-wider">
+              {/* UPDATED: Added link to JAC Magnus */}
+              <a 
+                href="https://www.jacmagnus.com/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-[#d56600] font-semibold uppercase tracking-wider hover:underline transition-all"
+              >
                 JAC Magnus Private Limited
-              </span>
+              </a>
             </span>
           </p>
         </div>
